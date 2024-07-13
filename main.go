@@ -8,6 +8,11 @@ import (
 func main() {
 	//初始化配置
 	initialize.InitViper()
+
+	//初始化k8s集群配置
+	initialize.InitK8s()
+
 	//初始化gin路由
 	initialize.InitRouters()
+
 }

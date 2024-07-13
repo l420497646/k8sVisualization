@@ -17,17 +17,21 @@ func InitViper() {
 	}
 
 	//设置config路径和文件名称
-	configFile := fmt.Sprintf("%s-config.yaml", env)
+	configPath := "conf/"
+	configName := fmt.Sprintf("%s-config.yaml", env)
 
 	//viper初始化
 	v := viper.New()
-	v.SetConfigFile(configFile)
+	v.AddConfigPath(configPath)
+	v.SetConfigName(configName)
 	v.SetConfigType("yaml")
 
 	if err := v.ReadInConfig(); err != nil {
 		log.Fatalf("读取配置文件失败, %s", err.Error())
 	}
 
-	v.Unmarshal(&global.CONF)
+	if err := v.Unmarshal(&global.CONF); err != nil {
+		log.Fatalf("配置文件有误失败, %s", err.Error())
+	}
 
 }
