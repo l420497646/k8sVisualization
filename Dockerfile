@@ -14,7 +14,7 @@ FROM alpine:latest
 LABEL MAINTAINER="lsx@lsx.com"
 WORKDIR /go/src/K8sVisualization/server
 
-COPY --from=0 /go/src/K8sVisualization/server/conf ./conf
-COPY --from=0 /go/src/K8sVisualization/server/server ./server 
+COPY --from=0 /go/src/K8sVisualization/server/conf/* ./conf/
+COPY --from=0 /go/src/K8sVisualization/server/server ./
 EXPOSE 8889
 ENTRYPOINT ./server
