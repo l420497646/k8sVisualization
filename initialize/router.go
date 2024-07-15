@@ -2,6 +2,7 @@ package initialize
 
 import (
 	"k8sVisualization/global"
+	"k8sVisualization/middleware"
 	"k8sVisualization/router"
 
 	"github.com/gin-gonic/gin"
@@ -9,7 +10,7 @@ import (
 
 func InitRouters() {
 	r := gin.Default()
-
+	r.Use(middleware.Cors)
 	{
 		exampleGroup := router.AllRouterGroup.ExampleRouterGroup
 		exampleGroup.InitExample(r)

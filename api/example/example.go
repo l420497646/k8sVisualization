@@ -1,7 +1,7 @@
 package example
 
 import (
-	"net/http"
+	"k8sVisualization/model/common/response"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,7 +9,7 @@ import (
 type ExampleApi struct{}
 
 func (*ExampleApi) ExampleTest(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
+	response.SuccessWithDetailed(c, "请求数据成功", map[string]string{
 		"message": "pong",
 	})
 }
